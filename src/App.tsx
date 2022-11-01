@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Content from "./Components/Content";
+import Header from "./Components/Header";
+import Main from "./Components/Main";
+import { ToastContainer } from "react-toastify";
+import FooterArea from "./Components/FooterArea";
+import Author from "./Components/Author/Author";
+const App: React.FC = () => {
+  const [disappearHeader, setDisappearHeader] = useState(false);
 
-function App() {
+  useEffect(() => {
+    const scrollListener = () => {
+      if (window.scrollY > 2) {
+        setDisappearHeader(true);
+      } else {
+        setDisappearHeader(false);
+      }
+    };
+    window.addEventListener("scroll", scrollListener);
+
+    return () => {
+      window.removeEventListener("scroll", scrollListener);
+    };
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Main>
+      <ToastContainer />
+      <Header disappearHeader={disappearHeader} />
+      <Content />
+      <FooterArea />
+      <Author />
+    </Main>
   );
-}
+};
 
 export default App;
