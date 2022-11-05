@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const uri = axios.create({
-  baseURL: "http://localhost:3333",
+  baseURL: "https://system-admin-zendteam.herokuapp.com",
 });
 
 const useMessageClientApi = () => ({

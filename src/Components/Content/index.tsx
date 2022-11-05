@@ -20,7 +20,11 @@ import FormContact from "../FormContact";
 import CallImage from "../../image/Cal.gif";
 import { MessagesClientProvider } from "../../contexts/MessagesClientContext/MessagesClientContext";
 
-const Content = () => {
+interface PropsDisappearingHeader {
+  disappearHeader: boolean;
+}
+
+const Content = ({ disappearHeader }: PropsDisappearingHeader) => {
   const [projects] = useState([
     {
       id: 1,
@@ -84,12 +88,17 @@ const Content = () => {
           </h3>
         </div>
       </C.Section>
-      <WidGetProvider>
-        <C.ContentWidget>
-          <WidgetForm />
-          <ButtonFeedback />
-        </C.ContentWidget>
-      </WidGetProvider>
+      {disappearHeader ? (
+        <WidGetProvider>
+          <C.ContentWidget>
+            <WidgetForm />
+            <ButtonFeedback />
+          </C.ContentWidget>
+        </WidGetProvider>
+      ) : (
+        ""
+      )}
+
       <C.Section id="about">
         <div className="reveal active">
           <div className="title-area">

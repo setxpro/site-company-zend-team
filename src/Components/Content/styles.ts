@@ -148,7 +148,7 @@ export const ContentContact = styled.div`
 
 export const Aside = styled.div`
   height: 300px;
-  background-color: #242b3d;
+  background-color: transparent;
 
   display: flex;
   align-items: center;

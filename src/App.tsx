@@ -27,7 +27,7 @@ const App: React.FC = () => {
     <Main>
       <ToastContainer />
       <Header disappearHeader={disappearHeader} />
-      <Content />
+      <Content disappearHeader={disappearHeader} />
       <FooterArea />
       <Author />
     </Main>
